@@ -5,7 +5,6 @@ import {
   HeaderName,
   HeaderNavigation,
   HeaderMenuButton,
-  HeaderMenuItem,
   HeaderGlobalBar,
   HeaderGlobalAction,
   SkipToContent,
@@ -15,34 +14,34 @@ import {
 } from '@carbon/react';
 import { Switcher, Notification, UserAvatar } from '@carbon/react/icons';
 import { Link } from 'react-router-dom';
+import applicationConfig from '../../configs/application';
+import Navigation from '../Navigation';
 
 const ApplicationHeader = () => (
   <HeaderContainer
     render={({ isSideNavExpanded, onClickSideNavExpand }) => (
-      <Header aria-label="Developer Center">
+      <Header aria-label={applicationConfig.name}>
         <SkipToContent />
         <HeaderMenuButton
-          aria-label="Open menu"
+          aria-label={isSideNavExpanded ? 'Close menu' : 'Open menu'}
           onClick={onClickSideNavExpand}
           isActive={isSideNavExpanded}
+          aria-expanded={isSideNavExpanded}
         />
         <HeaderName as={Link} to="/" prefix="">
-          Developer Center
+          {applicationConfig.name}
         </HeaderName>
-        <HeaderNavigation aria-label="Developer Center">
-          <HeaderMenuItem as={Link} to="/">
-            Home
-          </HeaderMenuItem>
+        <HeaderNavigation aria-label={applicationConfig.name}>
+          <Navigation />
         </HeaderNavigation>
         <SideNav
           aria-label="Side navigation"
           expanded={isSideNavExpanded}
-          isPersistent={false}>
+          isPersistent={false}
+          onSideNavBlur={onClickSideNavExpand}>
           <SideNavItems>
             <HeaderSideNavItems>
-              <HeaderMenuItem as={Link} to="/carbon">
-                Carbon
-              </HeaderMenuItem>
+              <Navigation />
             </HeaderSideNavItems>
           </SideNavItems>
         </SideNav>
