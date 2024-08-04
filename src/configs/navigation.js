@@ -6,8 +6,8 @@ const navigationConfig = {
       textBreakMode: 'tail',
       disabled: false,
       route: {
-        name: 'index'
-      }
+        name: 'index',
+      },
     },
     {
       text: 'Work Orders',
@@ -22,8 +22,8 @@ const navigationConfig = {
           textBreakMode: 'tail',
           disabled: false,
           route: {
-            name: 'myWorkOrders'
-          }
+            name: 'myWorkOrders',
+          },
         },
         {
           text: 'Active',
@@ -33,9 +33,9 @@ const navigationConfig = {
           route: {
             name: 'workOrders',
             params: {
-              type: 'active'
-            }
-          }
+              type: 'active',
+            },
+          },
         },
         {
           text: 'Completed',
@@ -43,10 +43,10 @@ const navigationConfig = {
           textBreakMode: 'tail',
           disabled: false,
           route: {
-            name: 'completedWorkOrders'
-          }
+            name: 'completedWorkOrders',
+          },
         },
-      ]
+      ],
     },
     {
       text: 'Test Work Order Detail',
@@ -56,11 +56,11 @@ const navigationConfig = {
       route: {
         name: 'workOrderDetail',
         params: {
-          id: 100
-        }
-      }
-    }
-  ]
+          id: 100,
+        },
+      },
+    },
+  ],
 };
 
 export default navigationConfig;

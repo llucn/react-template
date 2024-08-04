@@ -16,7 +16,7 @@ const pagesConfig = {
       name: 'workOrderDetail',
       components: workOrderDetail,
     },
-  ]
+  ],
 };
 
 export default pagesConfig;

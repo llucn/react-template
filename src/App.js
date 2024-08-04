@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './app.scss';
-import { Content, Theme } from '@carbon/react';
+import { Content, Theme, Grid, Column } from '@carbon/react';
 import ApplicationHeader from './components/ApplicationHeader';
 import { Route, Switch, HashRouter as Router } from 'react-router-dom';
-import CarbonSample from './content/CarbonSample';
-import ApplicationCards from './content/ApplicationCards';
+import Page from './components/Page';
 
 class App extends Component {
   render() {
@@ -14,9 +13,14 @@ class App extends Component {
           <ApplicationHeader />
         </Theme>
         <Content>
-          <Switch>
-            <Route exact path="/" component={ApplicationCards} />
-          </Switch>
+          <Grid className="main-page__r1">
+            <Column lg={16} md={8} sm={4} className="repo-page__r1">
+              <Switch>
+                <Route exact path="/" component={Page} />
+                <Route exact path="/:name" component={Page} />
+              </Switch>
+            </Column>
+          </Grid>
         </Content>
       </Router>
     );

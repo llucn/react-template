@@ -5,8 +5,6 @@ import {
   HeaderName,
   HeaderNavigation,
   HeaderMenuButton,
-  HeaderMenu,
-  HeaderMenuItem,
   HeaderGlobalBar,
   HeaderGlobalAction,
   SkipToContent,
@@ -16,11 +14,13 @@ import {
 } from '@carbon/react';
 import { Switcher, Notification, UserAvatar } from '@carbon/react/icons';
 import { Link } from 'react-router-dom';
+import applicationConfig from '../../configs/application';
+import Navigation from '../Navigation';
 
 const ApplicationHeader = () => (
   <HeaderContainer
     render={({ isSideNavExpanded, onClickSideNavExpand }) => (
-      <Header aria-label="Developer Center">
+      <Header aria-label={applicationConfig.name}>
         <SkipToContent />
         <HeaderMenuButton
           aria-label={isSideNavExpanded ? 'Close menu' : 'Open menu'}
@@ -29,34 +29,10 @@ const ApplicationHeader = () => (
           aria-expanded={isSideNavExpanded}
         />
         <HeaderName as={Link} to="/" prefix="">
-          Developer Center
+          {applicationConfig.name}
         </HeaderName>
-        <HeaderNavigation aria-label="Developer Center">
-          <>
-            <HeaderMenuItem as={Link} to="#">
-              Link 1
-            </HeaderMenuItem>
-            <HeaderMenuItem as={Link} to="#">
-              Link 2
-            </HeaderMenuItem>
-            <HeaderMenuItem as={Link} to="#">
-              Link 3
-            </HeaderMenuItem>
-            <HeaderMenuItem as={Link} to="/">
-              Home
-            </HeaderMenuItem>
-            <HeaderMenu aria-label="Link 4" menuLinkName="Link 4">
-              <HeaderMenuItem as={Link} to="#">
-                Sub-link 1
-              </HeaderMenuItem>
-              <HeaderMenuItem as={Link} isActive to="#">
-                Sub-link 2
-              </HeaderMenuItem>
-              <HeaderMenuItem as={Link} to="#">
-                Sub-link 3
-              </HeaderMenuItem>
-            </HeaderMenu>
-          </>
+        <HeaderNavigation aria-label={applicationConfig.name}>
+          <Navigation />
         </HeaderNavigation>
         <SideNav
           aria-label="Side navigation"
@@ -65,31 +41,7 @@ const ApplicationHeader = () => (
           onSideNavBlur={onClickSideNavExpand}>
           <SideNavItems>
             <HeaderSideNavItems>
-              <>
-                <HeaderMenuItem as={Link} to="#">
-                  Link 1
-                </HeaderMenuItem>
-                <HeaderMenuItem as={Link} to="#">
-                  Link 2
-                </HeaderMenuItem>
-                <HeaderMenuItem as={Link} to="#">
-                  Link 3
-                </HeaderMenuItem>
-                <HeaderMenuItem as={Link} to="/">
-                  Home
-                </HeaderMenuItem>
-                <HeaderMenu aria-label="Link 4" menuLinkName="Link 4">
-                  <HeaderMenuItem as={Link} to="#">
-                    Sub-link 1
-                  </HeaderMenuItem>
-                  <HeaderMenuItem as={Link} isActive to="#">
-                    Sub-link 2
-                  </HeaderMenuItem>
-                  <HeaderMenuItem as={Link} to="#">
-                    Sub-link 3
-                  </HeaderMenuItem>
-                </HeaderMenu>
-              </>
+              <Navigation />
             </HeaderSideNavItems>
           </SideNavItems>
         </SideNav>
