@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbSkeleton } from '@carbon/react';
+import { Link, useParams, useHistory } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem } from '@carbon/react';
 import '../content/formio-style.scss';
 import { Form, Formio } from '@formio/react';
 import pagesConfig from '../configs/pages';
 import routesConfig from '../configs/routes';
 
 const Page = () => {
+  const history = useHistory();
   var { name } = useParams();
   if (!name) {
     name = 'index';
@@ -41,10 +42,14 @@ const Page = () => {
         form={components}
         submission={submission}
         onChange={arg => setSubmission({ data: arg.data })}
-        onNavigation={arg => console.log('navigation', arg)}
         onError={arg => console.log('error', arg)}
-        onData={arg => console.log('data', arg)}
         onAlert={arg => console.log('alert', arg)}
+        onData={data => {
+          setSubmission({ data: data });
+        }}
+        onNavigate={navigate => {
+          history.push(navigate.route);
+        }}
       />
     </div>
   );
