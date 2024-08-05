@@ -3,10 +3,12 @@ import './app.scss';
 import { Content, Theme, Grid, Column } from '@carbon/react';
 import ApplicationHeader from './components/ApplicationHeader';
 import { Route, Switch, HashRouter as Router } from 'react-router-dom';
+import applicationConfig from './configs/application';
 import Page from './components/Page';
 
 class App extends Component {
   render() {
+    document.title = applicationConfig.name;
     return (
       <Router>
         <Theme theme="g100">
